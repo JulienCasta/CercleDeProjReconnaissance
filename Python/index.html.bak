@@ -1,0 +1,57 @@
+<html>
+ <head>
+  <title>Test PHP</title>
+ </head>
+ <body>
+<p>Bonjour le monde</p>
+ <button onclick="sendMsg()">message au serveur</button>
+
+ <div>
+    <table>
+    <tr style="font-weight : bold">
+        <td>Date</td>
+        <td>Température CPU</td>
+        <td>Utilisation du CPU</td>
+        <td>Utilisation de la RAM</td>
+    </tr>
+    <tr>
+        <td id="date">0</td>
+        <td id="temp">0</td>
+        <td id="cpu">0</td>
+        <td id="ram">0</td>
+    </tr>
+    </table>
+    <p id="text"></p>
+ </div>
+ <script>
+    const socket = new WebSocket("ws://");
+
+    socket.addEventListener("open", function (event){
+        console.log("Connecté WS serveur")
+    });
+
+    socket.addEventListener("close", function (event){
+        console.log("Déconnecté WS serveur")
+    });
+
+    socket.addEventListener("message", function (event){
+        console.log("Serveur : Data receive")
+        UpdateData(JSON.parse(event.data))
+    });
+
+    function UpdateData(CpuJson){
+            console.log(CpuJson);
+            document.getElementById("date").innerText = CpuJson['CPUdata']['Date'];
+            document.getElementById("temp").innerText = CpuJson['CPUdata']['Temperature'] + "°C";
+            document.getElementById("cpu").innerText = CpuJson['CPUdata']['CpuUsage'].toFixed(2) + "%";
+            document.getElementById("ram").innerText = CpuJson['CPUdata']['RAMUsage'] + "/3.7Go"
+            document.getElementById("text").innerText = CpuJson['CPUdata']['Text']
+        }   
+
+    const sendMsg = () =>{
+        console.log("Client : Ping")
+        socket.send("Ping")
+    }
+ </script>
+ </body>
+</html>

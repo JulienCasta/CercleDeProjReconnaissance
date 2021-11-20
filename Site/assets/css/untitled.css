@@ -1,0 +1,74 @@
+.btnPopup{
+    background-color: rgb(26, 34, 77);
+    padding: 1em 2em;
+    cursor: pointer;
+}
+
+.btnPopup:hover{
+    background-color: rgb(228, 228, 228);
+}
+
+.overlay {
+    position: fixed;
+    left: 0px;
+    top:0px;
+    background-color: rgba(0,0 ,0 , 0.5);
+    width: 100%;
+    height: 100%;
+    z-index:1;
+    display:none;
+}
+
+.popup{
+    margin: 10% auto;
+    width : 70%;
+    height: 25%;
+    background-color: rgb(243, 243, 243);
+    padding: 1em;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+
+.monBouton{
+    margin:0 auto;
+    display: table;
+    float:left;
+    margin:20px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    
+    width: 120px;
+    padding: 7px 10px;
+    
+    color: rgb(255, 255, 255);
+    background: #442fbb;
+}
+
+.monBouton:hover{
+    background: #1971a9;
+    color: #fff;
+}
+
+.monBouton1{
+    margin:0 auto;
+    display: table;
+    float: left;
+    margin:20px;
+    text-align: center;
+    font-weight: 700;
+    text-decoration: none;
+    
+    width: 120px;
+    padding: 7px 10px;
+    
+    color: rgb(255, 255, 255);
+    background: #442fbb;
+}
+
+
+.monBouton1:hover{
+    background: #1971a9;
+    color: #fff;
+}

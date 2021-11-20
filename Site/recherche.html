@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: rgb(36,45,73);padding: 0px;">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="font-size: 25px;padding: 61px 16px;">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-plane"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>eXOTISMES</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar" style="height: 118px;width: 226px;">
+                    <li class="nav-item"><a class="nav-link" href="index.html" style="font-size: 17.6px;"><i class="fa fa-bar-chart-o"></i><span>Statistiques</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="recherche.html" style="font-size: 17.6px;"><i class="fa fa-search"></i><span>Recherche</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div id="overlay" class="overlay">
+                    <div id="popup" class="popup">
+                        <h2 id="modalTitle">
+                            Mots clés détectés :
+                        </h2>
+                        <div id="modalAction">
+                            Voulez-vous effectuer l'action ?
+                        </div>
+                        <button id="btnClose" type="button" class="monBouton">Oui</button>
+                        <button id="btnClose1" type="button" class="monBouton1">Non</button>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="card shadow mb-5">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Recherche vocale</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row d-xxl-flex justify-content-xxl-center align-items-xxl-start">
+                                <div class="col-md-6">
+                                    <form>
+                                        <div class="mb-3">
+                                            <textarea class="form-control" id="textInput" rows="4" name="signature">Les mots clés détéctés s'afficheront ici</textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white d-xxl-flex justify-content-xxl-center sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+     <script>
+        const socket = new WebSocket("ws://192.168.3.211:5000");
+        var btnPopup = document.getElementById('btnPopup');
+        var overlay = document.getElementById('overlay');
+        var btnClose1 = document.getElementById('btnClose1');
+        var btnClose = document.getElementById('btnClose');
+        var loadDate = new Date();
+        var loadHour = loadDate.getHours();
+        var loadMin = loadDate.getMinutes();
+        var laodDay = loadDate.getDate();
+
+        if(!localStorage.Hour){
+            let localStorage = window.localStorage;
+            localStorage.setItem("nbHour", [0]);
+            localStorage.setItem("Hour", loadHour);
+            localStorage.setItem("nbMin", [0]);
+            localStorage.setItem("Min", loadMin);
+            localStorage.setItem("nbDay", [0]);
+            localStorage.setItem("Day", laodDay);
+            localStorage.setItem("nbAction", [0])
+        }
+        
+
+        socket.addEventListener("open", function (event){
+            console.log("Connecté WS serveur")
+        });
+    
+        socket.addEventListener("close", function (event){
+            console.log("Déconnecté WS serveur")
+        });
+    
+        socket.addEventListener("message", function (event){
+            console.log("Serveur : Data receive")
+            UpdateData(JSON.parse(event.data))
+        });
+
+        function updateDate(){
+            let loadDate = new Date();
+            let loadHour = loadDate.getHours();
+            let loadMin = loadDate.getMinutes();
+            let loadDay = loadDate.getDate();
+        }
+
+        function updateCounters(){
+            var currentDate = new Date();
+            if (window.localStorage.Hour != currentDate.getHours()){
+                window.localStorage.setItem("nbHour", 0)
+                window.localStorage.setItem("Hour",currentDate.getHour());
+            }
+            if (window.localStorage.Min != currentDate.getMinutes()){
+                window.localStorage.setItem("nbMin", 0)
+                window.localStorage.setItem("Min",currentDate.getMinutes())
+            }
+            if (window.localStorage.Day != currentDate.getDate()){
+                window.localStorage.setItem("nbDay", 0)
+                window.localStorage.setItem("Day",currentDate.getDate())
+            }
+        }
+
+        function UpdateData(CpuJson){
+            console.log(CpuJson);
+            console.log(window.localStorage.nbHour);
+            console.log(window.localStorage.nbMin);
+            console.log(window.localStorage.nbDay);
+            console.log(window.localStorage.Hour);
+            console.log(window.localStorage.Min);
+            console.log(window.localStorage.Day);
+            if(CpuJson['CPUdata']['Text']!=''){
+                updateCounters();
+                upCounters();
+                openModal();
+                //Fonction pour fermer la popUP
+                btnClose.addEventListener('click', closeModal);
+                btnClose1.addEventListener('click', closeModal1);
+                document.getElementById("textInput").innerText = CpuJson['CPUdata']['Text']
+                document.getElementById("modalTitle").innerText = "Mots clé détecté : " + CpuJson['CPUdata']['Text']
+                document.getElementById("modalAction").innerText = "Voulez vous effectuer l'action : " + CpuJson['CPUdata']['Text']
+            }
+        }
+
+        function upCounters(){
+            var nb = window.localStorage.nbHour;
+            var date = window.localStorage.Hour;
+            window.localStorage.setItem("nbHour", parseInt(nb)+1)
+            window.localStorage.setItem("Hour", date)
+            nb = window.localStorage.nbMin;
+            date = window.localStorage.Min;
+            window.localStorage.setItem("nbMin", parseInt(nb)+1)
+            window.localStorage.setItem("Min", date)
+            nb = window.localStorage.nbDay;
+            date = window.localStorage.Day;
+            window.localStorage.setItem("nbDay", parseInt(nb)+1)
+            window.localStorage.setItem("Day", date)
+            console.log(window.localStorage.nbDay)
+        }
+
+
+
+        function closeModal() {
+                overlay.style.display = 'none';
+                var nbAction = window.localStorage.nbAction
+                window.localStorage.setItem("nbAction", parseInt(nbAction)+1)
+                document.getElementById("textInput").innerHTML = "Les mots clés détéctés s'afficheront ici"
+            }
+        function closeModal1() {
+            overlay.style.display = 'none';
+            document.getElementById("textInput").innerHTML = "Les mots clés détéctés s'afficheront ici"
+        }
+        function openModal() {
+                overlay.style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

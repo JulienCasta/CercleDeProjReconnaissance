@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="background: rgb(36,45,73);padding: 0px;">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#" style="font-size: 25px;padding: 61px 16px;">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-plane"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>eXOTISMES</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar" style="height: 118px;width: 226px;">
+                    <li class="nav-item"><a class="nav-link active" href="index.html" style="font-size: 17.6px;"><i class="fa fa-bar-chart-o"></i><span>Statistiques</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="recherche.html" style="font-size: 17.6px;"><i class="fa fa-search"></i><span>Recherche</span></a></li>
+                <div class="text-center d-none d-md-inline"></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Statistiques</h3>
+                    </div>
+                    <div class="row d-md-flex flex-column my-auto justify-content-md-start" style="width: 909.6px;height: 220.4px;margin: 7px;">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span >Mots clés détectés par minute</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id ="count_min">0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Mots clés détectés par heure</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="count_hour">0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar-day fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-info py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>mots clés détectés par jour</span></div>
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span id = "count_day" >0</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar-alt fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1" style="width: 108.4px;color: var(--bs-green);"><span style="color: var(--bs-green);">nOMBRE D'ACTIONS EXéCUTéES</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="nb_actions">0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="far fa-edit fa-2x text-gray-300" style="font-size: 26px;"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-xl-4 d-xxl-flex justify-content-xxl-center align-items-xxl-start" style="width: 1120.463px;margin: 0px;">
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary fw-bold m-0">Utilisation du CPU en %</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area"><canvas id="cpu-chart"></canvas></div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h6 class="text-primary fw-bold m-0">Utilisation de la RAM en Mo</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart-area"><canvas id="ram-chart"></canvas></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white d-xxl-flex justify-content-xxl-center sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script>
+        const socket = new WebSocket("ws://192.168.3.211:5000");
+    
+        socket.addEventListener("open", function (event){
+            console.log("Connecté WS serveur")
+        });
+    
+        socket.addEventListener("close", function (event){
+            console.log("Déconnecté WS serveur")
+        });
+    
+        socket.addEventListener("message", function (event){
+            console.log("Serveur : Data receive")
+            UpdateData(JSON.parse(event.data))
+        });
+    
+        function UpdateData(CpuJson){
+                updateCounters()
+                document.getElementById("count_min").innerHTML = window.localStorage.nbMin
+                document.getElementById("count_hour").innerHTML = window.localStorage.nbHour
+                document.getElementById("count_day").innerHTML = window.localStorage.nbDay
+                document.getElementById("nb_actions").innerHTML = window.localStorage.nbAction
+                console.log(CpuJson);
+                var ramUsage = CpuJson['CPUdata']['RAMUsage'][1]
+                var ramMax = CpuJson['CPUdata']['RAMUsage'][0]
+                ramMax -= ramUsage
+                var cpuUsage = CpuJson['CPUdata']['CpuUsage'].toFixed(2);
+                var cpuMax = 100 - cpuUsage;
+                var chartCpu = document.getElementById("cpu-chart").getContext('2d');
+                var chartRam = document.getElementById("ram-chart").getContext('2d');
+                var cpuChart = new Chart(chartCpu, {
+                    type : 'doughnut',
+                    data: {
+                        labels: ['Utilisé', 'Disponible'],
+                        datasets: [{
+                            label: 'Taux d\'utilisation du CPU',
+                            data:[cpuUsage, cpuMax],
+                            backgroundColor: ['rgb(78, 115, 223)', 'light-blue'],
+                            borderColor: ['white']
+                        }]
+                    },
+                    options:{
+                        animation: {
+                            duration: 0
+                            }
+                        }
+                })
+                var ramChart = new Chart(chartRam, {
+                    type : 'doughnut',
+                    data: {
+                        labels: ['Utilisé', 'Disponible'],
+                        datasets: [{
+                            label: 'Taux d\'utilisation de la RAM',
+                            data:[ramUsage, ramMax],
+                            backgroundColor: ['Yellow', 'Orange'],
+                            borderColor: ['white']
+                        }]
+                    },
+                    options:{
+                        animation: {
+                            duration: 0
+                            }
+                        }
+                })                
+            }   
+        
+            function updateCounters(){
+                var currentDate = new Date();
+                if (window.localStorage.Hour != currentDate.getHours()){
+                    window.localStorage.setItem("nbHour", 0)
+                    window.localStorage.setItem("Hour",currentDate.getHour());
+                }
+                if (window.localStorage.Min != currentDate.getMinutes()){
+                    window.localStorage.setItem("nbMin", 0)
+                    window.localStorage.setItem("Min",currentDate.getMinutes())
+                }
+                if (window.localStorage.Day != currentDate.getDate()){
+                    window.localStorage.setItem("nbDay", 0)
+                    window.localStorage.setItem("Day",currentDate.getDate())
+                }
+            }
+        
+        const sendMsg = () =>{
+            console.log("Client : Ping")
+            socket.send("Ping")
+        }
+     </script>
+</body>
+</html>
